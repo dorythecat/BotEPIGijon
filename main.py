@@ -89,6 +89,12 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent) -> Non
 
     await user.send("Rol quitado correctamente")
 
+
+@bot.command(description="Invitación al servidor")
+async def invite(ctx: discord.ApplicationContext) -> None:
+    await ctx.respond("Invita a tus amig@s al servidor!\nhttps://discord.gg/CcsaKhvhqJ")
+
+
 dotenv.load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if BOT_TOKEN is None:
