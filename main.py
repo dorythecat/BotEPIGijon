@@ -20,10 +20,12 @@ async def on_ready() -> None:
 @bot.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent) -> None:
     user = payload.member
-    if user.bot or payload.message_id not in [1408560477151432706, 1408560559531753623]:
+    if user.bot or payload.message_id not in [1408560477151432706, 1408560559531753623, 1408852142046838797]:
         return
 
-    if str(payload.emoji) not in ["🖥️", "📊", "📡", "🌉", "📋", "🔧", "⚡", "🔬", "💡", "🇪🇸", "🇬🇧"]:
+    if str(payload.emoji) not in ["🖥️", "📊", "📡", "🌉", "📋", "🔧", "⚡", "🔬", "💡",
+                                  "🇪🇸", "🇬🇧",
+                                  "1️⃣", "2️⃣", "3️⃣", "4️⃣", "👁️"]:
         return
 
     match str(payload.emoji):
@@ -49,6 +51,16 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent) -> None:
             await user.add_roles(discord.utils.get(user.guild.roles, id=756149958276677683))
         case "🇬🇧":
             await user.add_roles(discord.utils.get(user.guild.roles, id=756149959434436680))
+        case "1️⃣":
+            await user.add_roles(discord.utils.get(user.guild.roles, id=751915341311115316))
+        case "2️⃣":
+            await user.add_roles(discord.utils.get(user.guild.roles, id=751915659641749555))
+        case "3️⃣":
+            await user.add_roles(discord.utils.get(user.guild.roles, id=756143341506134137))
+        case "4️⃣":
+            await user.add_roles(discord.utils.get(user.guild.roles, id=756143348175077399))
+        case "👁️":
+            await user.add_roles(discord.utils.get(user.guild.roles, id=1408849593004720210))
 
     await user.send("Rol añadido correctamente")
 
@@ -57,10 +69,12 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent) -> None:
 async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent) -> None:
     guild = bot.get_guild(payload.guild_id)
     user = guild.get_member(payload.user_id)
-    if payload.message_id not in [1408560477151432706, 1408560559531753623]:
+    if payload.message_id not in [1408560477151432706, 1408560559531753623, 1408852142046838797]:
         return
 
-    if str(payload.emoji) not in ["🖥️", "📊", "📡", "🌉", "📋", "🔧", "⚡", "🔬", "💡", "🇪🇸", "🇬🇧"]:
+    if str(payload.emoji) not in ["🖥️", "📊", "📡", "🌉", "📋", "🔧", "⚡", "🔬", "💡",
+                                  "🇪🇸", "🇬🇧",
+                                  "1️⃣", "2️⃣", "3️⃣", "4️⃣", "👁️"]:
         return
 
     match str(payload.emoji):
@@ -86,6 +100,16 @@ async def on_raw_reaction_remove(payload: discord.RawReactionActionEvent) -> Non
             await user.remove_roles(discord.utils.get(guild.roles, id=756149958276677683))
         case "🇬🇧":
             await user.remove_roles(discord.utils.get(guild.roles, id=756149959434436680))
+        case "1️⃣":
+            await user.remove_roles(discord.utils.get(guild.roles, id=751915341311115316))
+        case "2️⃣":
+            await user.remove_roles(discord.utils.get(guild.roles, id=751915659641749555))
+        case "3️⃣":
+            await user.remove_roles(discord.utils.get(guild.roles, id=756143341506134137))
+        case "4️⃣":
+            await user.remove_roles(discord.utils.get(guild.roles, id=756143348175077399))
+        case "👁️":
+            await user.remove_roles(discord.utils.get(guild.roles, id=1408849593004720210))
 
     await user.send("Rol quitado correctamente")
 
